@@ -35,7 +35,7 @@ namespace VariablesCS
 
             Console.Write("Enter the magic name to play a cool game: ");
             var checkingName = Console.ReadLine().ToUpper();
-            if (checkingName == "John Doe".ToUpper())
+            if (checkingName == "Alice".ToUpper())
             {
                 Console.WriteLine("Welcome to the cool game of math. \n Pick one number: ");
                 var firstNumber = Double.Parse(Console.ReadLine());
@@ -55,7 +55,6 @@ namespace VariablesCS
                 Console.WriteLine($"Dividing the first number by the second number equals: {quotient}");
                 var modulus = firstNumber % secondNumber;
                 Console.WriteLine($"The remainder of the first number divided by the second number equals: {modulus}");
-
             }
             else
             {
