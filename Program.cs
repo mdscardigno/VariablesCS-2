@@ -23,6 +23,7 @@ namespace VariablesCS
             // Ask the user for their name and store it in a variable named userName.
             Console.WriteLine("What is your name?");
             string userName = Console.ReadLine();
+
             //check to see if the user entered nothing, whitespace or a number. 
             var num = -1;
             while (string.IsNullOrEmpty(userName) || string.IsNullOrWhiteSpace(userName) || int.TryParse(userName, out num))
@@ -36,26 +37,21 @@ namespace VariablesCS
 
             //******** Practice Getting Different Types of Input From the User **********
             // Ask the user for their age and store it in a variable named userAge.
-            var userAge = "";
-            while (!int.TryParse(userAge, out num))
+
+            Console.WriteLine("What is your age?");
+            string userAge = Console.ReadLine();
+            int inputAgeValue;
+            bool correctInputValue = int.TryParse(userAge, out inputAgeValue);
+            bool valid = correctInputValue && inputAgeValue >= 0;
+            while (!valid)
             {
-                Console.WriteLine("What is your age?");
+                Console.WriteLine("Invalid input. Try again...");
                 userAge = Console.ReadLine();
-
-                try
-                {
-
-                    var ageEntered = int.Parse(userAge);
-                    if (ageEntered < 0)
-                    {
-                        Console.WriteLine("You must enter a positive number.");
-                    }
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("You must enter a whole number.");
-                }
+                correctInputValue = int.TryParse(userAge, out inputAgeValue);
+                valid = correctInputValue && inputAgeValue >= 0;
             }
+            Console.WriteLine($"You entered: {inputAgeValue}");
+
             // Ask the user for their favorite color and store it in a variable named userColor.
             Console.WriteLine("What is your favorite color?");
             string userColor = Console.ReadLine();
