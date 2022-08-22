@@ -6,60 +6,101 @@ namespace VariablesCS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Practice Creating Variables");
+            //********* Practice Creating Variables **********
+
+            // Create a variable(use your best judgment for type) that stores the numberOfCupsOfCoffee that you drink every day.
             int numberOfCupsOfCoffee = 2;
+            // Create a variable(use your best judgment for type) called fullName and set it equal to your full name.
             string fullName = "John Doe";
-            DateTime today = DateTime.Now;
+            // Create a variable(use your best judgment for type) called today and set it equal to today's date.
+            var today = DateTime.Today;
+            var todayDay = today.DayOfWeek;
+            // Use Console.WriteLine and your variables, numberOfCupsOfCoffee, fullName, and today, to output all three on one line.
+            Console.WriteLine($"{fullName} had {numberOfCupsOfCoffee} cups of coffee today, {todayDay} {today}");
 
-            Console.WriteLine("My name is " + fullName + ". " + "Today I drank " + numberOfCupsOfCoffee + " cups of coffee. Today is " + today);
+            //******** Practice Getting Input From the User **********
 
-            Console.Write("What is your name? ");
-            var userName = Console.ReadLine();
+            // Ask the user for their name and store it in a variable named userName.
+            Console.WriteLine("What is your name?");
+            string userName = Console.ReadLine();
+            // Print out a greeting to the user, using their name.
+            Console.WriteLine($"Hello {userName}");
 
-            Console.Write("It is a pleasure to meet you, " + userName + ". ");
-            //single line comment 
-            /* multi line comment */
-            int score1 = 100;
-            int score2 = score1 + 1;
-            Console.WriteLine("\n" + (score1 + score2));
+            //******** Practice Getting Different Types of Input From the User **********
+            // Ask the user for their age and store it in a variable named userAge.
+            Console.WriteLine("What is your age?");
+            int userAge = int.Parse(Console.ReadLine());
+            // Ask the user for their favorite color and store it in a variable named userColor.
+            Console.WriteLine("What is your favorite color?");
+            string userColor = Console.ReadLine();
+            // Ask the user for their favorite animal and store it in a variable named userAnimal.
+            Console.WriteLine("What is your favorite animal?");
+            string userAnimal = Console.ReadLine();
+            // Ask the user for their favorite food and store it in a variable named userFood.
+            Console.WriteLine("What is your favorite food?");
 
-            var float1 = 1.0f;
-            var float2 = 2.0f;
-            Console.WriteLine(float1 += float2);
-            var dec3 = 0.33m;
-            var dec4 = 0.81m;
-            Console.WriteLine(dec3 + dec4);
-            var dec5 = 0.33m;
-            var dec6 = 0.84m;
-            Console.WriteLine(dec5 + dec6);
-
-            Console.Write("Enter the magic name to play a cool game: ");
-            var checkingName = Console.ReadLine().ToUpper();
-            if (checkingName == "Alice".ToUpper())
+            // Ask the user to input 1st number.
+            Console.WriteLine("Enter one number.");
+            string firstNumberAsString = Console.ReadLine();
+            if (string.IsNullOrEmpty(firstNumberAsString))
             {
-                Console.WriteLine("Welcome to the cool game of math. \n Pick one number: ");
-                var firstNumber = Double.Parse(Console.ReadLine());
-                //string interpolation
-                Console.WriteLine($"You picked: {firstNumber}");
-                Console.WriteLine("Pick a second number: ");
-                var secondNumber = Int32.Parse(Console.ReadLine());
-                Console.WriteLine($"You picked: {secondNumber}");
-
-                var sum = firstNumber + secondNumber;
-                Console.WriteLine($"The first number and second number added together equals: {sum}");
-                var difference = firstNumber - secondNumber;
-                Console.WriteLine($"Subtracting the second number  from the first number equals: {difference}");
-                var product = firstNumber * secondNumber;
-                Console.WriteLine($"Multiplying the first number by the second number equals: {product}");
-                var quotient = firstNumber / secondNumber;
-                Console.WriteLine($"Dividing the first number by the second number equals: {quotient}");
-                var modulus = firstNumber % secondNumber;
-                Console.WriteLine($"The remainder of the first number divided by the second number equals: {modulus}");
+                Console.WriteLine("Please enter a valid number.");
+                // userInput1 = Console.ReadLine();
+                // if (firstNumberAsString == null && firstNumberAsString == "")
+                // {
+                //     Console.WriteLine("Please enter two numbers separated by a space.");
+                // }
             }
-            else
+            // Ask the user to input 2nd number
+            Console.WriteLine("Enter another number.");
+            string secondNumberAsString = Console.ReadLine();
+            if (string.IsNullOrEmpty(secondNumberAsString))
             {
-                Console.WriteLine("Too bad. Access denied.");
+                Console.WriteLine("Please enter a valid number.");
+                // userInput2 = Console.ReadLine();
+                // if (secondNumberAsString == null && secondNumberAsString == "")
+                // {
+                //     Console.WriteLine("Please enter second number");
+                // }
             }
+            //******** Converting String Input Into Numbers ********
+            // Convert each string above to a double using double.Parse.Save the first value in a variable named firstOperand and the second value in a variable named secondOperand.
+            double firstOperand = double.Parse(firstNumberAsString);
+            double secondOperand = double.Parse(secondNumberAsString);
+            // Use Console.WriteLine to output the sum.
+            Console.WriteLine($"{firstOperand} + {secondOperand} = {firstOperand + secondOperand}");
+            // Use Console.WriteLine to output the difference.
+            Console.WriteLine($"{firstOperand} - {secondOperand} = {firstOperand - secondOperand}");
+            // Use Console.WriteLine to output the product.
+            Console.WriteLine($"{firstOperand} * {secondOperand} = {firstOperand * secondOperand}");
+            // Use Console.WriteLine to output the quotient.
+            Console.WriteLine($"{firstOperand} / {secondOperand} = {firstOperand / secondOperand}");
+            // Use Console.WriteLine to output the remainder or modulus.
+            Console.WriteLine($"{firstOperand} % {secondOperand} = {firstOperand % secondOperand}");
+
+
+
+
+
+
+            //******** Doing Math
+
+            // Add the operand variables from above and save the results in a variable named sum.
+            // Subtract the secondOperand variable from the firstOperand variable and save the results in a variable named difference.
+            // Multiply the operand variables and save the results in a variable named product.
+            // Divide the firstOperand by the secondOperand and save the results in a variable named quotient.
+            // Find the remainder when one operand is divided by the other and save the results in a variable named remainder. See this page if you need to learn more about the modulo operator.
+            // Use Console.WriteLine to present the user, in a meaningful way, each of the values for the sum, difference, quotient, product, and remainder variables. (e.g. perhaps one of your outputs is similar to If you add 4 and 5 you get 9 if 4 and 5 were the input)
+
+            //******** Using Logic
+            // Add some logic to your program that prints a different, special, greeting to the user if their name happens to be Alice.
+            // Using DateTime
+            // Use the type DateTime to represent the date variables.
+            // See the lesson on variables for some guidance on DateTime.
+
+            // Move all of your code to a separate method (but keep it in the same file) and invoke it from the Main method.
+
+
 
         }
     }
