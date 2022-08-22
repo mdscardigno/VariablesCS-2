@@ -23,13 +23,39 @@ namespace VariablesCS
             // Ask the user for their name and store it in a variable named userName.
             Console.WriteLine("What is your name?");
             string userName = Console.ReadLine();
+            //check to see if the user entered nothing, whitespace or a number. 
+            var num = -1;
+            while (string.IsNullOrEmpty(userName) || string.IsNullOrWhiteSpace(userName) || int.TryParse(userName, out num))
+            {
+                Console.WriteLine("Please enter your name.");
+                userName = Console.ReadLine();
+            }
             // Print out a greeting to the user, using their name.
+            //make a method for this called greeting
             Console.WriteLine($"Hello {userName}");
 
             //******** Practice Getting Different Types of Input From the User **********
             // Ask the user for their age and store it in a variable named userAge.
-            Console.WriteLine("What is your age?");
-            int userAge = int.Parse(Console.ReadLine());
+            var userAge = "";
+            while (!int.TryParse(userAge, out num))
+            {
+                Console.WriteLine("What is your age?");
+                userAge = Console.ReadLine();
+
+                try
+                {
+
+                    var ageEntered = int.Parse(userAge);
+                    if (ageEntered < 0)
+                    {
+                        Console.WriteLine("You must enter a positive number.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("You must enter a whole number.");
+                }
+            }
             // Ask the user for their favorite color and store it in a variable named userColor.
             Console.WriteLine("What is your favorite color?");
             string userColor = Console.ReadLine();
@@ -42,66 +68,66 @@ namespace VariablesCS
             // Ask the user to input 1st number.
             Console.WriteLine("Enter one number.");
             string firstNumberAsString = Console.ReadLine();
-            if (string.IsNullOrEmpty(firstNumberAsString))
+            while (string.IsNullOrEmpty(firstNumberAsString) || string.IsNullOrWhiteSpace(firstNumberAsString) || !int.TryParse(firstNumberAsString, out num))
             {
-                Console.WriteLine("Please enter a valid number.");
-                // userInput1 = Console.ReadLine();
-                // if (firstNumberAsString == null && firstNumberAsString == "")
-                // {
-                //     Console.WriteLine("Please enter two numbers separated by a space.");
-                // }
+                Console.WriteLine("No number was entered. Please try again.");
+                firstNumberAsString = Console.ReadLine();
+
             }
+            Console.WriteLine($"You entered: {firstNumberAsString}");
+
             // Ask the user to input 2nd number
             Console.WriteLine("Enter another number.");
             string secondNumberAsString = Console.ReadLine();
-            if (string.IsNullOrEmpty(secondNumberAsString))
+            while (string.IsNullOrEmpty(secondNumberAsString) || string.IsNullOrWhiteSpace(secondNumberAsString) || !int.TryParse(secondNumberAsString, out num))
             {
-                Console.WriteLine("Please enter a valid number.");
-                // userInput2 = Console.ReadLine();
-                // if (secondNumberAsString == null && secondNumberAsString == "")
-                // {
-                //     Console.WriteLine("Please enter second number");
-                // }
+                Console.WriteLine("No number was entered. Please try again.");
+                secondNumberAsString = Console.ReadLine();
             }
+            Console.WriteLine($"You entered: {secondNumberAsString}");
+
+            Console.WriteLine("Press enter to see results.");
+            Console.ReadKey();
+
             //******** Converting String Input Into Numbers ********
             // Convert each string above to a double using double.Parse.Save the first value in a variable named firstOperand and the second value in a variable named secondOperand.
-            double firstOperand = double.Parse(firstNumberAsString);
-            double secondOperand = double.Parse(secondNumberAsString);
-            // Use Console.WriteLine to output the sum.
-            Console.WriteLine($"{firstOperand} + {secondOperand} = {firstOperand + secondOperand}");
-            // Use Console.WriteLine to output the difference.
-            Console.WriteLine($"{firstOperand} - {secondOperand} = {firstOperand - secondOperand}");
-            // Use Console.WriteLine to output the product.
-            Console.WriteLine($"{firstOperand} * {secondOperand} = {firstOperand * secondOperand}");
-            // Use Console.WriteLine to output the quotient.
-            Console.WriteLine($"{firstOperand} / {secondOperand} = {firstOperand / secondOperand}");
-            // Use Console.WriteLine to output the remainder or modulus.
-            Console.WriteLine($"{firstOperand} % {secondOperand} = {firstOperand % secondOperand}");
+            var firstOperand = double.Parse(firstNumberAsString);
+            var secondOperand = double.Parse(secondNumberAsString);
 
-
-
-
-
-
-            //******** Doing Math
-
+            //******** Doing Math with Variables ********
             // Add the operand variables from above and save the results in a variable named sum.
+            var sum = firstOperand + secondOperand;
+            // Use Console.WriteLine to output the sum.
+            Console.WriteLine($"{firstOperand} + {secondOperand} = {sum}");
+
             // Subtract the secondOperand variable from the firstOperand variable and save the results in a variable named difference.
+            var difference = firstOperand - secondOperand;
+            // Use Console.WriteLine to output the difference.
+            Console.WriteLine($"{firstOperand} - {secondOperand} = {difference}");
+
             // Multiply the operand variables and save the results in a variable named product.
+            var product = firstOperand * secondOperand;
+            // Use Console.WriteLine to output the product.
+            Console.WriteLine($"{firstOperand} * {secondOperand} = {product}");
+
             // Divide the firstOperand by the secondOperand and save the results in a variable named quotient.
+            var quotient = firstOperand / secondOperand;
+            // Use Console.WriteLine to output the quotient.
+            Console.WriteLine($"{firstOperand} / {secondOperand} = {quotient}");
+
             // Find the remainder when one operand is divided by the other and save the results in a variable named remainder. See this page if you need to learn more about the modulo operator.
-            // Use Console.WriteLine to present the user, in a meaningful way, each of the values for the sum, difference, quotient, product, and remainder variables. (e.g. perhaps one of your outputs is similar to If you add 4 and 5 you get 9 if 4 and 5 were the input)
+            var remainder = firstOperand % secondOperand;
+            // Use Console.WriteLine to output the remainder (left over) or modulus.
+            Console.WriteLine($"{firstOperand} % {secondOperand} = {remainder}");
 
             //******** Using Logic
             // Add some logic to your program that prints a different, special, greeting to the user if their name happens to be Alice.
             // Using DateTime
             // Use the type DateTime to represent the date variables.
-            // See the lesson on variables for some guidance on DateTime.
+            var todaysDay = DateTime.Now.Hour;
+            Console.WriteLine($"Today at exactly, {todaysDay}, I learned that some lipsticks contain fish scales! /n And there are 293 ways to make change for a dollar. ");
 
             // Move all of your code to a separate method (but keep it in the same file) and invoke it from the Main method.
-
-
-
         }
     }
 }
